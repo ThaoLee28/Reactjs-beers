@@ -32,13 +32,13 @@ class BeerList extends Component {
     render () {
         const { beers } = this.state;
         return(
-            <div className="container mx-auto my-5">
-                <h2 className="my-5">List of beers <span>do not buy them all !</span></h2>
+            <div className="container mx-auto my-5 w-full">
+                <h2 className="my-5 px-2">List of beers!</h2>
                 <div className="list-beers flex flex-row">
                     <ul className="list-reset w-1/3">
                         {beers.map(beer=> (
-                            <li className="bg-green-lightest py-5 pl-3 shadow-md border-b-2">
-                                <a href="/" className="no-underline text-black">{beer.name}</a>
+                            <li className="bg-black py-5 pl-3 shadow-md border-b-2">
+                                <a href="/" className="no-underline text-white font-bold">{beer.name}</a>
                             </li>
                         ))}
                     </ul>

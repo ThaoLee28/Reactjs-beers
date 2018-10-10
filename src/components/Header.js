@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Header extends Component {
     render() {
         return (
-            <header className="h-auto bg-orange">
+            <header className="h-auto bg-orange px-5">
                 <div className="text-center">
                     <a href="/">
                         <img src="/images/logo.png" alt="" className="w-64 h-48"/>
