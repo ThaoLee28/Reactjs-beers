@@ -9,7 +9,7 @@ class BeerList extends Component {
             beers: []
         };
     }
-    componentDidMount() {
+    fetchBeers = () => {
         fetch("https://api.punkapi.com/v2/beers/")
             .then(res => res.json())
             .then(
@@ -19,6 +19,19 @@ class BeerList extends Component {
                     })
                 },
             )
+    }
+
+    componentDidMount() {
+        this.fetchBeers();
+        // fetch("https://api.punkapi.com/v2/beers/")
+        //     .then(res => res.json())
+        //     .then(
+        //         results => {
+        //             this.setState({
+        //                 beers: results
+        //             })
+        //         },
+        //     )
     }
     render () {
         const { beers } = this.state;

@@ -1,9 +1,5 @@
-import React, {
-    Component
-} from 'react';
-import {
-    withRouter
-} from 'react-router';
+import React, { Component } from 'react';
+import { withRouter } from 'react-router';
 
 class BeerItem extends Component {
     constructor(props) {
@@ -33,15 +29,21 @@ class BeerItem extends Component {
         if (nextProps.match.params.id !== this.props.match.params.id) {
             this.fetchBeer(nextProps.match.params.id)
         }
-
     }
     render() {
         const { beers } = this.state;
-        console.log(this.props.match.params.id);
+        //console.log(this.props.match.params.id);
         return ( 
             <div> {
                 (beers || []).map(beer => ( 
-                    <p key={beer.id}>{beer.description}</p>
+                    <div key={beer.id} className="flex flex-col">
+                        <div>
+                            <p className="my-5">{beer.description}</p>
+                        </div>
+                        <div className="text-center w-full h-full">
+                            <img src={beer.image_url} alt="" className="w-32 h-auto"/>
+                        </div>
+                    </div>
                 ))} 
             </div>
         );
