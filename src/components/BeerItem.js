@@ -19,6 +19,9 @@ class BeerItem extends Component {
                     })
                 },
             )
+            .catch(() => {
+                console.log('Error');
+            })
     }
 
     componentDidMount() {

@@ -6,7 +6,7 @@ class BeerList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            search:'',
+            search: '',
             beers: []
         };
     }
@@ -20,6 +20,9 @@ class BeerList extends Component {
                     })
                 },
             )
+            .catch(() => {
+                console.log('Error');
+            })
     }
 
     componentDidMount() {
@@ -32,9 +35,9 @@ class BeerList extends Component {
 
     render () {
         const { beers , search } = this.state;
-        // console.log(beers);
+        //console.log(beers);
         const filteredList = beers.filter(beer => {
-            return beer.name.toLowerCase().indexOf(search.toLowerCase()) !== -1
+            return beer.name.toLowerCase().indexOf(search.toLowerCase()) !== -1 
         })
         return(
             <div>
@@ -43,7 +46,7 @@ class BeerList extends Component {
                         onChange={this.handleOnchange}
                         value={this.state.search}
                         type="text" placeholder="Search..." 
-                        className="border-2 border-solid w-1/2 h-12 rounded px-5 hover:shadow focus:border-none"/>
+                        className="bg-grey-lighter border-2 border-solid w-1/2 h-12 rounded px-5 hover:shadow focus:bg-white focus:boder-blue-light"/>
                 </div>
                 <Router>
                     <div className="container mx-auto my-5 w-full">
@@ -54,10 +57,9 @@ class BeerList extends Component {
                                     <li className="bg-black py-5 pl-3 shadow-md border-b-2" key={beer.id}>
                                         <Link to={"/" + beer.id} className="no-underline text-white font-bold">{beer.name}</Link>
                                     </li>
-                                    
                                 ))}
                             </ul>
-                            <div className="w-2/3 bg-teal-lightest p-5">
+                            <div className="w-2/3 bg-teal-lightest p-5" style={this.state.search ? {} : { display: 'none' }}>
                                 <h3>Description</h3>
                                 <Route exact path ={"/:id"} component={BeerItem}/>
                             </div>
